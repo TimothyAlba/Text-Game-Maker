@@ -1,4 +1,4 @@
-package com.worldCreator.util.input;
+package com.tgm.input;
 
 import java.util.*;
 

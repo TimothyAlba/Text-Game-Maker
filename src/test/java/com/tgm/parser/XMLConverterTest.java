@@ -1,6 +1,5 @@
-package parser;
-import com.worldCreator.gameObjects.Text;
-import com.worldCreator.parser.XMLConverter;
+package com.tgm.parser;
+import com.tgm.gameObjects.Text;
 import javafx.util.Pair;
 import org.junit.Test;
 import org.w3c.dom.Element;

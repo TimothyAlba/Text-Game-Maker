@@ -1,6 +1,6 @@
-package com.worldCreator.parser;
+package com.tgm.parser;
 
-import com.worldCreator.gameObjects.*;
+import com.tgm.gameObjects.*;
 import javafx.util.Pair;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,17 +17,17 @@ import java.util.HashMap;
 
 public class XMLConverter {
 
-    static public final String STORY = "story";
-    static public final String CHAPTER = "chapter";
-    static public final String SCENE = "scene";
-    static public final String DIALOG = "dialog";
-    static public final String REPLY = "reply";
-    static public final String TEXT = "text";
-    static public final String BACKGROUND_IMG = "backgroundimage";
-    static public final String BACKGROUND_MUSIC = "backgroundmusic";
-    static public final String ID = "id";
-    static public final String NEXT = "next";
-    static public final String NEXT_REGEX = ":";
+    static private final String STORY = "story";
+    static private final String CHAPTER = "chapter";
+    static private final String SCENE = "scene";
+    static private final String DIALOG = "dialog";
+    static private final String REPLY = "reply";
+    static private final String TEXT = "text";
+    static private final String BACKGROUND_IMG = "backgroundimage";
+    static private final String BACKGROUND_MUSIC = "backgroundmusic";
+    static private final String ID = "id";
+    static private final String NEXT = "next";
+    static private final String NEXT_REGEX = ":";
     static private final String [] HIERARCHY = {STORY, CHAPTER, SCENE, DIALOG, REPLY};
 
     static public Game parse(String filepath) throws Exception {
@@ -42,16 +42,14 @@ public class XMLConverter {
             doc.getDocumentElement().normalize();
 
             Element root = doc.getDocumentElement();
-            HashMap<String,Chapter> gameStory = null;
+            HashMap<String, Chapter> gameStory = null;
             NodeList childNodes = root.getChildNodes();
             Node temp;
 
             for (int i = 0; i < childNodes.getLength(); i++) {
                 temp = childNodes.item(i);
-                if(temp.getNodeType() == Node.ELEMENT_NODE){
-                    switch(temp.getNodeName().toLowerCase()) {
-                        case STORY: gameStory = buildStory((Element) temp);
-                    }
+                if(temp.getNodeType() == Node.ELEMENT_NODE && STORY.equals(temp.getNodeName().toLowerCase())){
+                        gameStory = buildStory((Element) temp);
                 }
             }
 
@@ -62,7 +60,7 @@ public class XMLConverter {
         }
     }
 
-    static public HashMap<String,Chapter> buildStory(Element storyNode) {
+    static HashMap<String,Chapter> buildStory(Element storyNode) {
         HashMap<String,Chapter> chapters = new HashMap<>();
         NodeList childNodes = storyNode.getChildNodes();
         Node temp;
@@ -78,9 +76,9 @@ public class XMLConverter {
         return chapters;
     }
 
-    static public Pair<String,Chapter> buildChapter(Element chapterNode) {
+    static Pair<String,Chapter> buildChapter(Element chapterNode) {
         String identification = chapterNode.getAttribute(ID);
-        HashMap<String,Scene> scenes = new HashMap<>();
+        HashMap<String, Scene> scenes = new HashMap<>();
         NodeList childNodes = chapterNode.getChildNodes();
         Node temp;
 
@@ -95,11 +93,11 @@ public class XMLConverter {
         return new Pair<>(identification, new Chapter(scenes));
     }
 
-    static public Pair<String,Scene> buildScene(Element sceneNode) {
+    static Pair<String,Scene> buildScene(Element sceneNode) {
         String identification = sceneNode.getAttribute(ID);
         String backgroundImg = "EMPTY";
         String backgroundMusic = "EMPTY";
-        HashMap<String,Dialog> dialog = new HashMap<>();
+        HashMap<String, Dialog> dialog = new HashMap<>();
         NodeList childNodes = sceneNode.getChildNodes();
         Node temp;
 
@@ -120,7 +118,7 @@ public class XMLConverter {
         return new Pair<>(identification, new Scene(backgroundImg, backgroundMusic, dialog));
     }
 
-    static public Pair<String,Dialog> buildDialog(Element dialogNode) {
+    static Pair<String,Dialog> buildDialog(Element dialogNode) {
         String identification = dialogNode.getAttribute(ID);
         ArrayList<Text> speaker = new ArrayList<>();
         Reply response = null;
@@ -144,7 +142,7 @@ public class XMLConverter {
         return new Pair<>(identification, new Dialog(speaker, response));
     }
 
-    static public Reply buildReply(Element replyNode) {
+    static Reply buildReply(Element replyNode) {
         ArrayList<Text> replies = new ArrayList<>();
         NodeList childNodes = replyNode.getChildNodes();
         Node temp;
@@ -159,7 +157,7 @@ public class XMLConverter {
         return new Reply(replies);
     }
 
-    static public Text buildText(Element textNode) {
+    static Text buildText(Element textNode) {
         String [] next = textNode.hasAttribute(NEXT) ? textNode.getAttribute(NEXT).split(NEXT_REGEX) : null;
         if(next == null){
             return new Text(textNode.getTextContent());

@@ -1,4 +1,4 @@
-package com.worldCreator.gameObjects;
+package com.tgm.gameObjects;
 
 import javafx.util.Pair;
 

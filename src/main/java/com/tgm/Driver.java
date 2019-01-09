@@ -1,6 +1,6 @@
-package com.worldCreator;
+package com.tgm;
 
-import com.worldCreator.util.input.Arguments;
+import com.tgm.input.Arguments;
 
 public class Driver {
 

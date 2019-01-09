@@ -1,7 +1,4 @@
-package gameObjects;
-import com.worldCreator.gameObjects.Chapter;
-import com.worldCreator.gameObjects.Dialog;
-import com.worldCreator.gameObjects.Scene;
+package com.tgm.gameObjects;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
