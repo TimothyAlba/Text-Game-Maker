@@ -1,0 +1,67 @@
+<HellowWorld>
+    <Characters>
+        <Character>
+            <Name>Tim Lloyd</Name>
+            <Age>27</Age>
+            <FavoriteColor>Blue</FavoriteColor>
+        </Character>
+        <Character>
+            <Name>Jon Lloyd</Name>
+            <Age>24</Age>
+            <FavoriteColor>Red</FavoriteColor>
+        </Character>
+    </Characters>
+    <Story>
+        <Chapter id="start">
+            <Scene id="start">
+                <BackgroundImage>back_img.png</BackgroundImage>
+                <AmbientMusic>starry_night.mp3</AmbientMusic>
+                <Dialog id="start">
+                    <Text>Hey there Tim, this is Jon!</Text>
+                    <Text>How are you feeling today?</Text>
+                    <Reply>
+                        <Text next="Dialog:Happy Reply">I'm feeling great!</Text>
+                        <Text next="Dialog:Sad Reply">I'm kinda sad today...</Text>
+                    </Reply>
+                </Dialog>
+                <Dialog id="Happy Reply">
+                    <Text>Sweet dude! I'm feeling the same way :)</Text>
+                    <Text>You done with this test?</Text>
+                    <Reply>
+                        <Text next="Fin">Yeah man!</Text>
+                        <Text next="Chapter:start">Nah man, let's do this again!</Text>
+                    </Reply>
+                </Dialog>
+                <Dialog id="Sad Reply">
+                    <Text>Oh man, what's wrong?</Text>
+                    <Reply>
+                        <Text next="Scene:Fix It">My car is broken, could you help me fix it?</Text>
+                        <Text next="Life">Life is rough right now, just need some time...</Text>
+                    </Reply>
+                </Dialog>
+            </Scene>
+            <Scene id="Fix It">
+                <BackgroundImage>back_img.png</BackgroundImage>
+                <AmbientMusic>starry_night.mp3</AmbientMusic>
+                <Dialog id="start">
+                    <Text>Well Tim it looks like you're battery is dead.</Text>
+                    <Text>We're going to need to replace the battery,\notherwise everything looks great!</Text>
+                    <Reply>
+                        <Text next="Fin">Thanks Jon!</Text>
+                        <Text next="Dialog:Cost">Oh jeeze Jon, how much will that cost?</Text>
+                    </Reply>
+                </Dialog>
+                <Dialog id="Cost">
+                    <Text>It'll only cost about $80, but with cars it could be worse!</Text>
+                    <Reply>
+                        <Text next="Fin">Phew! I'll buy one tomorrow!</Text>
+                        <Text next="Dialog:Welcome">Thanks again Jon!</Text>
+                    </Reply>
+                </Dialog>
+                <Dialog id="Welcome">
+                    <Text next="Fin">You're welcome!</Text>
+                </Dialog>
+            </Scene>
+        </Chapter>
+    </Story>
+</HellowWorld>
