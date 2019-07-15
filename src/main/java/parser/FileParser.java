@@ -1,30 +1,23 @@
-import javafx.application.Application;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
+package parser;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class andrew_main {
+public class FileParser {
+    private String _fileName;
+    private String _fileData;
 
-    public static void main (String[] args) throws Exception {
-        andrew_main app = new andrew_main();
-        app.Start();
+    public void ParseFile(String fileName) throws Exception {
+        _fileName = fileName;
+
+        ReadFile();
+        ParseFileData();
     }
 
-    private void Start() throws Exception {
-        String fileName = "drew-story.txt";
-        //System.out.println(ParseFile(ReadFile(fileName)) );
-        parser.FileParser pf = new parser.FileParser();
-        pf.ParseFile(fileName);
-    }
-
-   /* private String ReadFile(String fileName) throws IOException {
+    private void ReadFile() throws Exception {
         StringBuilder result = new StringBuilder();
-        File file = new File(
-                getClass().getClassLoader().getResource(fileName).getFile()
-        );
+        File file = new File(getClass().getClassLoader().getResource(_fileName).getFile());
 
         try (FileReader reader = new FileReader(file);
              BufferedReader br = new BufferedReader(reader)) {
@@ -36,10 +29,72 @@ public class andrew_main {
             }
         }
 
-        return result.toString();
-    }*/
+        _fileData = result.toString();
+    }
 
-/*    private List<String> ParseFile(String data) {
+    private void ParseFileData() throws Exception{
+        HeaderInfo header;
+        List<SceneInfo> scenes;
+
+        header = ParseTitleInfo();
+        //ParseLocationInfo();
+        //ParseCharacterInfo();
+        scenes = ParseSceneInfo();
+
+
+        System.out.println(header.toString());
+        System.out.println(scenes.toString());
+    }
+    private HeaderInfo ParseTitleInfo(){
+        HeaderInfo header = new HeaderInfo();
+
+        for(String line : FileDataToList()){
+            ParseLine p = new ParseLine(line);
+
+            //Add check to look for multiple occurrences of values
+            switch(p.Action) {
+                case "title":
+                    header.Title = p.Data;
+                    break;
+                case "author":
+                    header.Author = p.Data;
+                    break;
+            }
+        }
+
+        //if any info found, create header object?
+        return header;
+    }
+    private List<SceneInfo> ParseSceneInfo() throws Exception{
+        List<SceneInfo> result = new ArrayList<>();
+        SceneInfo scene = new SceneInfo();
+
+        for(String line : FileDataToList()){
+            ParseLine p = new ParseLine(line);
+            switch (p.Action){
+                case "scene":
+                    if (scene.IsValid()) {
+                        result.add(scene);
+                        scene = new SceneInfo();
+                    }
+                case "script":
+                case "start":
+                case "end":
+                case "option":
+                    try {
+                        scene.AddLine(p.Action, p.Data);
+                    }
+                    catch(Exception ex){
+                        throw new Exception("Failed to parse scene data", ex);
+                    }
+                    break;
+            }
+        }
+
+        return result;
+    }
+
+    private List<String> FileDataToList() {
         List<String> result = new ArrayList<>();
         StringBuilder current_line = new StringBuilder();
         int char_index = 0;
@@ -47,8 +102,9 @@ public class andrew_main {
         Character next_char;
         Character quote_char = 0;
         String mode = "normal";
+        String data;
 
-        data = data.replace(System.lineSeparator(), "\\n");
+        data = _fileData.replace(System.lineSeparator(), "\\n");
         current_line.setLength(0);
 
         while(char_index < data.length()){
@@ -112,5 +168,5 @@ public class andrew_main {
             result.add(current_line.toString());
 
         return result;
-    }*/
+    }
 }
