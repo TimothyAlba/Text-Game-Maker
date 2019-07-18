@@ -15,6 +15,7 @@ public class andrew_main {
 
     private void Start() throws Exception {
         String fileName = "drew-story.txt";
+        fileName = "job-interview.txt";
         //System.out.println(ParseFile(ReadFile(fileName)) );
         parser.FileParser pf = new parser.FileParser();
         pf.ParseFile(fileName);

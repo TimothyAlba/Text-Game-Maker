@@ -103,6 +103,7 @@ public class FileParser {
         Character quote_char = 0;
         String mode = "normal";
         String data;
+        boolean isEscaped = false;
 
         data = _fileData.replace(System.lineSeparator(), "\\n");
         current_line.setLength(0);
@@ -153,10 +154,17 @@ public class FileParser {
                     break;
 
                 case "quote":
-                    if (curr_char.equals(quote_char)){
+                    if (!isEscaped && curr_char.equals(quote_char)){
                         quote_char = 0;
                         mode = "normal";
                     }
+                    if (curr_char.equals('\\')) {
+                        isEscaped = true;
+                    }
+                    else {
+                        isEscaped = false;
+                    }
+
                     current_line.append(curr_char);
                     break;
             }
