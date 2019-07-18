@@ -1,16 +1,18 @@
 package com.tgm;
 
+import java.util.List;
+
 public class Scene {
     private String name;
     private String text;
-    private String [][] options;
+    private List<String> options;
     private boolean end;
 
     private Scene() {
 
     }
 
-    public Scene (String name, String text, String [][] options, boolean end) {
+    public Scene (String name, String text, List<String> options, boolean end) {
         this.name = name;
         this.text = text;
         this.options = options;
@@ -33,11 +35,11 @@ public class Scene {
         this.text = text;
     }
 
-    public String[][] getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
-    public void setOptions(String[][] options) {
+    public void setOptions(List<String> options) {
         this.options = options;
     }
 
@@ -47,5 +49,20 @@ public class Scene {
 
     public void setEnd(boolean end) {
         this.end = end;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Scene: %s" +
+                "Text: %s" +
+                "Options: ",getName(),getText(),optionsToString());
+    }
+
+    private String optionsToString() {
+        String compiledString = "";
+        for (String option : getOptions()) {
+            compiledString += String.format("%n%t%t%s",option);
+        }
+        return compiledString;
     }
 }
