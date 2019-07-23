@@ -1,18 +1,21 @@
-package com.tgm;
+package com.tgm.objects;
+
+import javafx.util.Pair;
 
 import java.util.List;
+import java.util.Map;
 
 public class Scene {
     private String name;
     private String text;
-    private List<String> options;
+    private List<Pair<String,String>> options;
     private boolean end;
 
     private Scene() {
 
     }
 
-    public Scene (String name, String text, List<String> options, boolean end) {
+    public Scene (String name, String text, List<Pair<String,String>> options, boolean end) {
         this.name = name;
         this.text = text;
         this.options = options;
@@ -35,11 +38,11 @@ public class Scene {
         this.text = text;
     }
 
-    public List<String> getOptions() {
+    public List<Pair<String,String>> getOptions() {
         return options;
     }
 
-    public void setOptions(List<String> options) {
+    public void setOptions(List<Pair<String,String>> options) {
         this.options = options;
     }
 
@@ -60,8 +63,10 @@ public class Scene {
 
     private String optionsToString() {
         String compiledString = "";
-        for (String option : getOptions()) {
-            compiledString += String.format("%n%t%t%s",option);
+        int optionCounter = 1;
+        for (Pair<String,String> option : options) {
+            compiledString += String.format("%n%t%d%t%s",optionCounter,option.getValue());
+            ++optionCounter;
         }
         return compiledString;
     }

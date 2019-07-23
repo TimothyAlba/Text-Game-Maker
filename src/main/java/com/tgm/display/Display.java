@@ -1,11 +1,11 @@
 package com.tgm.display;
 
-import com.tgm.Scene;
+import com.tgm.objects.Game;
+import com.tgm.objects.Scene;
 
 public interface Display {
 
-    int displayScene(Scene scene);
+    int displayScene(Scene scene) throws InterruptedException;
 
-    int displayMainMenu();
-    }
+    int displayMainMenu() throws InterruptedException;
 }
