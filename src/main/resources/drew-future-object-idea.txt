@@ -1,0 +1,35 @@
+story
+	title : String
+	author : String
+	scenes : Scene[]
+
+scene
+	name : String
+	isStart : Boolean
+	isEnd : Boolean
+	script : blob[]
+	options : Option[]
+	locationName : String
+
+location
+	name : String
+	description : String
+	image : String  (relative url)
+	music : String  (relative url)
+
+blob
+	orderId : Integer
+
+textBlob : blob
+	text : String
+	style : String
+
+actionBlob : blob
+	action : String	 (pause, sound, image)
+	path : String
+
+option
+	text : String
+	sceneName : string
+
+

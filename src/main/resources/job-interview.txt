@@ -1,0 +1,205 @@
+title: "The JOB INTERVIEW. Can you land your dream gig?"
+author: "https://community.articulate.com/e-learning-examples/the-job-interview-branched-scenario"
+
+
+scene: intro
+script: "Great news!
+
+You've landed an interview for your dream job at Bobco and the big day is here! You're dressed up and read to shine."
+options: "Continue" = intro_2
+
+scene: intro_2
+script: "Your interview is scheduled for 5:30 PM and you live 20 minutes from the Bobco office. What time do you leave for the interview?"
+option: "4:45 PM; you like to have a comfortable buffer." = leave_445
+option: "5:00 PM; you like to arrive 10 mihutes early." = leave_500
+option: "5:10 PM; you like to be right on time." = leave_510
+
+scene: leave_445
+script: "On your way to the interview you get stuck in traffic.
+
+You've given yourself plenty of spare time, so despite the unexpected delay, you still arrive 5 minutes early. This craetes a great first impression and your interview starts on a good note."
+option: "Continue" = interview_start
+
+scene: leave_500
+script: "On your way to the interview you get stuck in traffic. You arrive 5 minutes late; this doesn't leave a great first impression with your interviewer.
+
+Don't worry, dispite this minor misstep, you can still turns things around!"
+option: "Continue" = interview_start
+
+scene: leave_510
+script: "On your way to the interview you get stuck in traffic. You arrive 25 minutes late; this leaves a terrible impression and displays a lack of preparedness.
+
+You're informed that the interviewer has cancelled your interview and moved on to the next candidate."
+option: "Continue" = interview_end_bad
+
+
+scene: interview_start
+script: "Welcome! I'm Erica Jones, the hiring manager. Thanks for coming in today.
+
+Why don't you tell me a bit about yourself?"
+option: "My career started years ago when I graduated from university and immediately started working for a technical writing company where I ..." = answer_long
+option: "I'm an award-winning instructional designer with a focus on technical writing and a passion for visual design." = answer_strong
+option: "Hmm... that's such a broad question. What do you want to know?" = answer_short
+
+scene: answer_long
+script: "After a few minutes of your career history Erica's eyes start to glaze over with boredom.
+
+Don't share your entire job history or personal details. Employers want to know what you can accomplish and if you can do the job at hand."
+option: "Continue" = interview_weakness
+
+scene: answer_strong
+script: "Erica's eyes light up; she is pleased to hear this. You've definitely piqued her interest with the mention of the award. Nice work!
+
+It's good to keep your answers show and sweet, but relevant to the interviewer. Subtly mentioning a career accomplishment or highlight is also a great idea."
+option: "Continue" = interview_award
+
+scene: answer_short
+script: "Erica isn't impressed. Answering a question with a question is a defensive tactic; also, not having a response makes you seem unprepared for a common question.
+
+Employers want to know what you've accomplished and if you can do the job. Next time try: \"I'm an award-winning instructional designer with a focus on technical writing and a passion for visual design.\""
+option: "Continue" = work_history
+
+
+scene: work_history
+script: "So, why don't you tell me a bit about your work history."
+option: "Well, my career started when I graduated from university and started working for a technical writing company where I did..." = history_long
+option: "I have experience with many areas of training and e-learning. Now I'm excited to take my skills to a larger stage, which this role would permit." = history_good
+option: "I've only been in the industry 5 years. I don't have the 8 years of experience you're looking for, but I still bring a lot to the table." = history_weak
+
+scene: history_long
+script: "Erica's eyes quickly glaze over with boredom; she doesn't want to hear about every job you've held since your very first paper route. Keep it relevant to the position you're interviewing for.
+
+Don't share your entire career history or any personal details. Employers want to hear about career highlights and accomplishments."
+option: "Continue" = interview_weakness
+
+scene: history_good
+script: "Erica is pleased to hear that you like being challenged and want to grow professionaly.
+
+This is a great answer because you give a quick high-level overview of your career, but also talk about your excitement for future growth."
+option: "Continue" = interview_weakness
+
+scene: history_weak
+script: "Erica is thinking about your lack of experience in certain areas; she also senses a potential lack of confidence.
+
+If you don't have expertise or experience in a certain area, don't point it out! If the interviewer brings it up you should acknowledge it, but play up your strengths, and avoid pointing out weaknesses or problem areas."
+option: "Continue" = interview_weakness
+
+
+scene: interview_award
+script: "Wow! Award-winning! Very impressive. Tell me more about that."
+option: "Oh, it's no big deal! It's just an award they give out every year to people in the training industry." = award_shy
+option: "I've had an extermely successful career and I win awards often. This was just one of several awards I received over the last few years." = award_brag
+option: "I participated in a great project that won awards at the national conference. It was a team effort!" = award_team
+
+scene: award_shy
+script: "Erica moves on without learning more about your unique accomplishments and skills.
+
+Don't downplay your successes for fear of sounding boastful. Be confident in your successes; the interviewer will never know about the great things you've done if you don't bring it up.
+
+Next time try: \" I participated in a great project that won awards at a national conference. It was a team effort!\""
+option: "Continue" = work_history
+
+scene: award_brag
+script: "Erica is a bit turned off by this comment, which comes off as overly-confident and a bit too boastful.
+
+While it is a good idea to talk about your accomplishments, you should attempt to do so in a subtle manner. Remember to stay humble and try not to brag too overtly."
+option: "Continue" = work_history
+
+scene: award_team
+script: "Erica is impressed by the award, your participation in the conference, and by the fact that you collaborate well with others on a team.
+
+It's good to be confident in your successes; the interviewer will never know about the great things you've done if you don't bring it up."
+option: "Continue" = work_history
+
+
+scene: interview_weakness
+script: "I'd like to hear about one of your weaknesses."
+option: "I'm a perfectionist and things tend to never be quite good enough for my high standards." = weakness_strong
+option: "I tend to procrastinate and wait until the last minute to deliver. I always get things done though!" = weakness_slow
+option: "I've spent much of my career working for one industry, which limits my perspective. I'm ready to take on new challenges." = weakness_narrow
+
+scene: weakness_strong
+script: "Erica is not impressed by this answer. It's an over-used response for this question and, as such, is viewed as an obvious lie (even if you really are a perfectionist!).
+
+Employers want to hear something like this: \"I've spend much of my career working for one industry, which can limit my perspective. I'm ready to take on new challenges.\" It's honest but also explains what you're doing to improve."
+option: "Continue" = interview_challenge
+
+scene: weakness_slow
+script: "Admitting that you're a procrastinator is unwise; Erica is clearly unimpressed. Employers don't want to hire someone who might be late for client meetings, or who waits until the last minute to get projects done.
+
+Next time, consider something like \"I've spend much of my career working for one industry, which can limit by perspective. I'm ready to take on new challenges.\" It's honest but also explains what you're doing to improve."
+option: "Continue" = interview_end_bad
+
+scene: weakness_narrow
+script: "Erica is impressed with your ability to identify an area for improvement and take action.
+
+Your answer is great because it's an honest yet realistic weakness, but also describes what you're doing to improve, which is what employers are interested in.
+
+Organizations like employees who can create solutions and solve problems."
+option: "Continue" = interview_challenge
+
+
+scene: interview_challenge
+script: "Tell me about a challenge you've faced in the workplace."
+option: "My former boss and I didn't get along, we just never meshed. He didn't care about this employees." = challenge_boss
+option: "I've missed deadlines because of co-workers who didn't do their part; that was so frustrating." = challenge_coworker
+option: "Once my boss shot down a great idea, and I didn't understand why. So, I met with him to uncover the reason, then solved the problem." = challenge_understanding
+
+scene: challenge_boss
+script: "Erica is visibly disappointed with your answer. Admitting you didn't get along with your boss is a big no-no; it can make you seem like a challenging employee.
+
+It's also strong recommended to never speak ill of former coworker or bosses during an interview; it can come across as spiteful and vengeful."
+option: "Continue" = interview_end_bad
+
+scene: challenge_coworker
+script: "This isn't a terrible answer, but it might seem like you play the blame game when things don't go smoothly.
+
+A better option would be to present a challenge you've faced before, then offer the solution you presented to solve it: \"Once my boss shot down a great idea, and I didn't understand why. So, I met with him to uncover the reason, then solved the problem."
+option: "Continue" = interview_conflict
+
+scene: challenge_understanding
+script: "Erica is pleased with your answer. This is a great choice because it presents not only a challenge you faced, but how you found a solution, which is critical.
+
+It doesn't hurt that you're also showing off how you get great ideas!"
+option: "Continue" = interview_conflict
+
+
+scene: interview_end_bad
+script: "Sorry. You're not a right fit for the role.
+
+You DIDN"T GET THE JOB. That's too bad!"
+end
+
+
+scene: interview_conflict
+script: "My last question for you: have you ever had conflict with a supervisor or manager?"
+option: "My last boss and I didn't get along. We never meshed; he didn't care about his employees." = conflict_boss
+option: "Never! In fact, I am good friends with all of my former bosses. I have many of them as Facebook friends." = conflict_none
+option: "Nothing that stands out. I've worked for different personality types and I've learned from all of them." = conflict_types
+
+scene: conflict_boss
+script: "Erica is visibly disappointed with your answer. Admitting you didn't get along with your boss is a big no-no; it can make you seem like a challenging employee.
+
+It's also strong recommended to never speak ill of former coworker or bosses during an interview; it can come across as spiteful and vengeful."
+option: "Continue" = interview_end_bad
+
+scene: conflict_none
+script: "Erica is surprised; it seems a bit unrealistic to be close friends with all former employers. During an interview, it's best to avoid blurring the lines between your personal and professional life.
+
+Next time try: \"Nothing that stands out. I've worked for different personality types and I've learned from all of them.\" It's a neutral response that indicates you're always looking for ways to learn."
+option: "Continue" = interview_end_Good
+
+scene: conflict_types
+script: "Erica is pleased with your answer. This question can be a trap; it's best not to admit to problems with past employers because that might make you seem like a challenging employee. Also, never speak ill of former co-workers or amanagers.
+
+This response also indicates you're always looking for ways to learn. Well done!"
+option: "Continue" = interview_end_Good
+
+
+scene: interview_end_Good
+script: "Great interview! You start Monday!
+
+You GOT THE JOB! Nice work!"
+end
+
+

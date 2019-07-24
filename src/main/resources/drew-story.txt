@@ -1,0 +1,47 @@
+// 7-9-2019 aholmberg - initial story idea. not complete
+
+/*
+big bad
+
+chainsaw
+	-brick
+		END - get pieces of brick in your eyes. go blind. all pigs get away.
+	-sticks
+		have trouble getting through the thicker stick but eventually cut through them all. killing the first little piggy
+		-brick/straw
+			you cut down the door instead of trying to grind the bricks down. killing that pig, then easily getting the next one.
+		-straw/brick
+
+	-straw
+		shred through the straw super fast hacking into the evil bastard, cutting its head clean off.
+		-brick/sticks
+
+		-sticks/brick
+*/
+
+
+title: "Legend of the Big Bad Wolf"
+author: "Andrew Holmberg"
+
+scene: intro
+start
+script: "Once upon a time there were three little... No. Wait a minute. Let's start with the hero!
+
+That is you. A wolf. Leader, superstar, HERO!
+
+It's up to you to stop the evil little piggies. And I'm here to help.
+
+There are three of them you'll have to deal with. Each as evil as the next. So this won't be an easy task, but that's surely no problem for you, hero."
+option: "Continue" = intro_2
+
+
+scene: intro_2
+script: "Next you'll need to choose a weapon:"
+option: "Chainsaw" = chainsaw_start
+option: "Poison Cookies" = cookie_start
+option: "Breath" = breath_start
+
+
+scene: breath_start
+script: "Breath weapon is it. Classic."
+option: "end" = end

@@ -26,7 +26,9 @@ public class AppRuntime {
                 }
                 case 1: {
                     System.out.println("Parsing story");
-                    TextParser.parse("FakePath/NotReal");
+
+                    Game game = TextParser.parse("/job-interview.txt");
+                    System.out.println(game);
                     System.out.println("The game has been generated! (this is a lie)");
                     break;
                 }
