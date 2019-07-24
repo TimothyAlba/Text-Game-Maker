@@ -56,7 +56,7 @@ option: "Continue" = interview_award
 scene: answer_short
 script: "Erica isn't impressed. Answering a question with a question is a defensive tactic; also, not having a response makes you seem unprepared for a common question.
 
-Employrers want to know what you've accomplished and if you can do the job. Next time try: \"I'm an award-winning instructional designer with a focus on technical writing and a passion for visual design.\""
+Employers want to know what you've accomplished and if you can do the job. Next time try: \"I'm an award-winning instructional designer with a focus on technical writing and a passion for visual design.\""
 option: "Continue" = work_history
 
 

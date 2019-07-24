@@ -2,6 +2,7 @@ package com.tgm.objects;
 
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +12,8 @@ public class Scene {
     private List<Pair<String,String>> options;
     private boolean end;
 
-    private Scene() {
-
+    public Scene() {
+        options = new ArrayList<Pair<String, String>>();
     }
 
     public Scene (String name, String text, List<Pair<String,String>> options, boolean end) {
@@ -38,6 +39,10 @@ public class Scene {
         this.text = text;
     }
 
+    public void addOption(String key, String value) {
+        options.add(new Pair<String, String>(key, value));
+    }
+
     public List<Pair<String,String>> getOptions() {
         return options;
     }
@@ -54,18 +59,26 @@ public class Scene {
         this.end = end;
     }
 
+    public boolean IsValid() {
+        if (!this.name.isEmpty() && (!this.text.isEmpty() || !options.isEmpty())){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
+
         return String.format("Scene: %s" +
-                "Text: %s" +
-                "Options: ",getName(),getText(),optionsToString());
+                "%nText: %s" +
+                "%nOptions: %s",getName(),getText(),optionsToString());
     }
 
     private String optionsToString() {
         String compiledString = "";
         int optionCounter = 1;
         for (Pair<String,String> option : options) {
-            compiledString += String.format("%n%t%d%t%s",optionCounter,option.getValue());
+            compiledString += "\n\t" + option.getKey() + "\t" + option.getValue();
             ++optionCounter;
         }
         return compiledString;

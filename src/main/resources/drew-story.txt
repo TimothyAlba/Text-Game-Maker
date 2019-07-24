@@ -43,10 +43,5 @@ option: "Breath" = breath_start
 
 
 scene: breath_start
-script: "Breath weapon is it. Classic.
-
-"
-
-scene: cookie_start
-script: ""
-option: ""
+script: "Breath weapon is it. Classic."
+option: "end" = end
