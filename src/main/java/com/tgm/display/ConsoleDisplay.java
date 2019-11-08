@@ -1,8 +1,7 @@
 package com.tgm.display;
 
-import com.tgm.objects.Scene;
+import com.tgm.objects.scene.Scene;
 import static com.tgm.Utilities.*;
-import com.tgm.display.Display;
 
 import java.util.List;
 import java.util.Scanner;

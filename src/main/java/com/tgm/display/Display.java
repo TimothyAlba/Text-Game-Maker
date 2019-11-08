@@ -1,7 +1,6 @@
 package com.tgm.display;
 
-import com.tgm.objects.Game;
-import com.tgm.objects.Scene;
+import com.tgm.objects.scene.Scene;
 
 public interface Display {
 

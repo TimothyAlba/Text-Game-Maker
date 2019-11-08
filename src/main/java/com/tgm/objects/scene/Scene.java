@@ -1,62 +1,46 @@
-package com.tgm.objects;
+package com.tgm.objects.scene;
 
+import com.tgm.parser.objects.scene.SceneHeaderTags;
 import javafx.util.Pair;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Scene {
+
+    //Scene objects
     private String name;
     private String text;
     private List<Pair<String,String>> options;
-    private boolean end;
+    private SceneHeaderTags tag;
 
-    public Scene() {
-        options = new ArrayList<Pair<String, String>>();
-    }
-
-    public Scene (String name, String text, List<Pair<String,String>> options, boolean end) {
+    public Scene(String name, String text, List<Pair<String,String>> options, SceneHeaderTags tag) {
         this.name = name;
         this.text = text;
         this.options = options;
-        this.end = end;
+        this.tag = tag;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void addOption(String key, String value) {
-        options.add(new Pair<String, String>(key, value));
     }
 
     public List<Pair<String,String>> getOptions() {
         return options;
     }
 
-    public void setOptions(List<Pair<String,String>> options) {
-        this.options = options;
+    public String getSceneForOption(int optionNum) {
+        return options.get(optionNum).getValue();
+    }
+
+    public SceneHeaderTags getTag() {
+        return tag;
     }
 
     public boolean isEnd() {
-        return end;
-    }
-
-    public void setEnd(boolean end) {
-        this.end = end;
+        return tag != null && tag == SceneHeaderTags.END;
     }
 
     public boolean IsValid() {
@@ -68,10 +52,10 @@ public class Scene {
 
     @Override
     public String toString() {
-
         return String.format("Scene: %s" +
+                "%nTag: %s" +
                 "%nText: %s" +
-                "%nOptions: %s",getName(),getText(),optionsToString());
+                "%nOptions: %s",getName(),getTag(),getText(),optionsToString());
     }
 
     private String optionsToString() {

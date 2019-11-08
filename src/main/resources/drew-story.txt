@@ -1,47 +1,49 @@
-// 7-9-2019 aholmberg - initial story idea. not complete
-
-/*
-big bad
-
-chainsaw
-	-brick
-		END - get pieces of brick in your eyes. go blind. all pigs get away.
-	-sticks
-		have trouble getting through the thicker stick but eventually cut through them all. killing the first little piggy
-		-brick/straw
-			you cut down the door instead of trying to grind the bricks down. killing that pig, then easily getting the next one.
-		-straw/brick
-
-	-straw
-		shred through the straw super fast hacking into the evil bastard, cutting its head clean off.
-		-brick/sticks
-
-		-sticks/brick
-*/
-
-
-title: "Legend of the Big Bad Wolf"
-author: "Andrew Holmberg"
-
-scene: intro
-start
-script: "Once upon a time there were three little... No. Wait a minute. Let's start with the hero!
+|scene: intro = start
+|script: Once upon a time there were three little... No. Wait a minute. Let's start with the hero!
 
 That is you. A wolf. Leader, superstar, HERO!
 
 It's up to you to stop the evil little piggies. And I'm here to help.
 
-There are three of them you'll have to deal with. Each as evil as the next. So this won't be an easy task, but that's surely no problem for you, hero."
-option: "Continue" = intro_2
+There are three of them you'll have to deal with. Each as evil as the next. So this won't be an easy task, but that's surely no problem for you, hero.
+|option: Continue = weapon
 
 
-scene: intro_2
-script: "Next you'll need to choose a weapon:"
-option: "Chainsaw" = chainsaw_start
-option: "Poison Cookies" = cookie_start
-option: "Breath" = breath_start
+|scene: weapon
+|script: Next you'll need to choose a weapon:
+|option: Chainsaw = chainsaw_start
+|option: Poison Cookies = cookie_start
+|option: Breath = breath_start
 
 
-scene: breath_start
-script: "Breath weapon is it. Classic."
-option: "end" = end
+|scene: breath_start
+|script: Breath weapon is it? Classic.
+|option: Blow the piggies down! = asthma_attack
+
+|scene: cookie_start
+|script: Oooooh your cookies look sooooo gooooood. Can you resist trying eating a cookie before the pigs do?
+|option: I'm a strong willed wolf! = poisoned_pigs
+|option: Uhhh, how about just a nibble? = dead_by_poison
+
+|scene: dead_by_poison = end
+|script: You took the smallest of nibbles but you put so much poison in the cookies even a nibble would kill a blue whale!
+
+Thus the story ends as the hero wolf dies due to poisoned cookies...
+
+|scene: poisoned_pigs = end
+|script: You knock on the door of the brick house where all three evil piggies were partying. The fattest little piggy
+opens the door and upon seeing the cookies SNATCHES the basket from your paws and slams the door in your face without
+a kind thank you. But it bothered you not as you reveled in the sounds of their gluttony through the door as they
+devoured your cookies, and a moment later you heard three loud thuds followed by dead silence....
+|option: Excellent! = wolf_wins
+
+|scene: chainsaw_start = end
+|script: The chainsaw is a fine tool, capable of cutting through the fattest logs in a matter of a few seconds. You
+wasted no time in your endeavor to stop the evil piggies and cut through the wooden door on the brick house like it
+was paper. What happened after that only your subconscious knows as your vision turned red and your ears filled with
+the roar of the chainsaw. Some passerbyers swore the sound coming from the brick house was that of demons being slayed
+and none dared to see what such a sound looked like.
+|option: RIP AND TEAR! = wolf_wins
+
+|scene: asthma_attack = end
+|script: Unfortunately for you you forgot to bring your inhaler! You huffed, you puffed, you wheezed, you choked, you died...

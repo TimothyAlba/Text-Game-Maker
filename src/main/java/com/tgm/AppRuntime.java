@@ -4,31 +4,40 @@ import com.tgm.display.Display;
 import com.tgm.display.ConsoleDisplay;
 import com.tgm.engine.Engine;
 import com.tgm.objects.Game;
+import com.tgm.objects.scene.MultipleStartingScenesException;
+import com.tgm.objects.scene.NoStartingSceneException;
+import com.tgm.parser.BadScriptTagException;
 import com.tgm.parser.TextParser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AppRuntime {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, MultipleStartingScenesException, BadScriptTagException, NoStartingSceneException, IOException {
         List<String> mainMenuOptions = generateMenuOptions();
         Display consoleDisplay = new ConsoleDisplay(mainMenuOptions);
         int option;
+        Game game = null;
         do {
             option = consoleDisplay.displayMainMenu();
             switch (option) {
                 case 0: {
-                    System.out.println("Playing game!");
-                    new Engine().playGame(new Game(), consoleDisplay);
-                    System.out.println("You played the game!");
+                    if (game != null) {
+                        Engine gameEngine = new Engine(consoleDisplay);
+                        System.out.println("Playing game!");
+                        gameEngine.playGame(game);
+                        System.out.println("You played the game!");
+                    } else {
+                        System.out.println("First you need to build the game! Select Option 2 next time first.");
+                    }
                     break;
                 }
                 case 1: {
                     System.out.println("Parsing story");
-
-                    Game game = TextParser.parse("/job-interview.txt");
-                    System.out.println(game);
+                    game = TextParser.parse("D:\\Tim\\Documents\\Programming Practice\\Text-Game-Maker\\src\\main\\resources\\drew-story.txt");
+//                    System.out.println(game);
                     System.out.println("The game has been generated! (this is a lie)");
                     break;
                 }

@@ -1,31 +1,34 @@
 package com.tgm.objects;
 
-import com.tgm.Utilities;
+import com.tgm.objects.scene.NoStartingSceneException;
+import com.tgm.objects.scene.Scene;
+import com.tgm.objects.scene.SceneMap;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Game {
 
-    Map<String, Scene> sceneList;
+    SceneMap sceneMap;
 
-    public Game() {
-        sceneList = new HashMap<>();
+    private Game() {
+        //Do not use
     }
 
-    public void addScene(Scene scene) {
-        sceneList.put(scene.getName(), scene);
+    public Game(SceneMap sceneMap) throws NoStartingSceneException {
+        if (!sceneMap.hasStartingScene())
+            throw new NoStartingSceneException();
+        this.sceneMap = sceneMap;
     }
+
     public Scene getScene(String sceneName) {
-        return sceneList.get(sceneName);
+        return sceneMap.getScene(sceneName);
+    }
+
+    public Scene getStart() {
+        return sceneMap.getStartingScene();
     }
 
     public String toString() {
-        String sceneStrings = "";
-        for (Map.Entry<String,Scene> pair : sceneList.entrySet()) {
-            sceneStrings += pair.getValue().toString() + "\n\n";
-        }
-        return "Number of scenes: " + sceneList.size() +
-                "\n" + sceneStrings;
+        return sceneMap.toString();
     }
 }
